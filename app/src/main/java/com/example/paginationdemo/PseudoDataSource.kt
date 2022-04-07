@@ -4,7 +4,7 @@ object PseudoDataSource {
 
     fun getPseudoDataSourceListViewState(
         page: Int,
-        pageLimitSize: Int = 30,
+        pageLimitSize: Int = 29,
     ): MutableList<MainViewModel.ListViewState> {
         val pageList = mutableListOf<MainViewModel.ListViewState>()
 

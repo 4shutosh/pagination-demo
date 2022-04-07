@@ -2,13 +2,13 @@ package com.example.paginationdemo
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ListView
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.paginationdemo.databinding.ListItemDemoBinding
 
-class DemoPagingAdapter: PagingDataAdapter<MainViewModel.ListViewState, DemoListViewHolder>(
+class DemoListAdapter:
+    ListAdapter<MainViewModel.ListViewState, DemoListViewHolder>(
         DemoDiffCallback) {
 
     override fun onBindViewHolder(holder: DemoListViewHolder, position: Int) {
@@ -27,5 +27,21 @@ class DemoPagingAdapter: PagingDataAdapter<MainViewModel.ListViewState, DemoList
             )
         )
     }
+
+}
+
+class DemoListViewHolder(val binding: ListItemDemoBinding) :
+    RecyclerView.ViewHolder(binding.root)
+
+object DemoDiffCallback : DiffUtil.ItemCallback<MainViewModel.ListViewState>() {
+    override fun areItemsTheSame(
+        oldItem: MainViewModel.ListViewState,
+        newItem: MainViewModel.ListViewState,
+    ) = oldItem == newItem
+
+    override fun areContentsTheSame(
+        oldItem: MainViewModel.ListViewState,
+        newItem: MainViewModel.ListViewState,
+    ) = oldItem == newItem
 
 }
